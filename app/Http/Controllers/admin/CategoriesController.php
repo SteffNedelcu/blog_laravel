@@ -7,6 +7,15 @@ use App\Http\Controllers\Controller;
 use App\Category;
 class CategoriesController extends Controller
 {
+        /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -56,7 +65,7 @@ class CategoriesController extends Controller
      */
     public function show(Category $category)
     {
-
+        dd($category->posts);
         return view('admin.categories.show',['category'=>$category]);
     }
 

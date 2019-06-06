@@ -1,56 +1,50 @@
 @extends('layouts.admin')
 @section('content')
+
 <div class="container-fluid">
-    <div class="row">
-    <div class="col-md-12">
-        <div class="card">
-        <div class="card-header card-header-primary">
-            <h4 class="card-title ">Categories</h4>
-            <p class="card-category">List all categories</p>
-            <a href="./categories/create" class="btn btn-default btn-round"><i class="material-icons">add</i></a>
-        </div>
-      
-        <div class="card-body">
-            <div class="table-responsive">
-            <table class="table">
-                <thead class=" text-primary">
-                <th>
-                    ID
-                </th>
-                <th>
-                    Title
-                </th>
-                <th>
-                    Description
-                </th>
-                <th>
-                </th>
-                </thead>
-                <tbody>
-                @foreach($categories as $i=>$category)
-                <form action="/admin/categories/{{$category->id}}" method="POST" id="delete-{{$category->id}}">
-                  @method('delete')
-                  @csrf
-                </form>
-                <tr>
-                    <td>{{$category->id}}</td>
-                    <td>{{$category->title}}</td>
-                    <td>{{$category->description}}</td>
-                    <td>
-                        <a href="/admin/categories/{{$category->id}}/edit" class=>Edit</a>
-                        <a href="/admin/categories/{{$category->id}}" class=>View</a>
-                        <a href="#" class="delete" data-id="{{$category->id}}">Delete</a>
-                    </td>
-                </tr>
-                @endforeach
-                </tbody>
-            </table>
-            </div>
-        </div>
-        </div>
+
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="#">Dashboard</a>
+  </li>
+  <li class="breadcrumb-item active">Tables</li>
+</ol>
+<a href="./categories/create" class="btn btn-primary"><i class="fas fa-plus"> Add</i></a>
+<!-- DataTables Example -->
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        @foreach($categories as $i=>$category)
+                    <form action="/admin/categories/{{$category->id}}" method="POST" id="delete-{{$category->id}}">
+                    @method('delete')
+                    @csrf
+                    </form>
+                    <tr>
+                        <td>{{$category->id}}</td>
+                        <td><a href="/admin/categories/{{$category->id}}" class="">{{$category->title}}</a></td>
+                        <td>{{$category->description}}</td>
+                        <td>
+                            <a href="/admin/categories/{{$category->id}}/edit" class=>Edit</a>
+                            <a href="/admin/categories/{{$category->id}}" class="">View</a>
+                            <a href="#" class="delete" data-id="{{$category->id}}">Delete</a>
+                        </td>
+                    </tr>
+                    @endforeach
+
+        </tbody>
+      </table>
     </div>
-   
-    </div>
+
+
 </div>
 @endsection
 @section('bottomscript')

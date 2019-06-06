@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('poza');
+            $table->text('content');
             $table->boolean('status')->default(true);
             $table->timestamps();
         });
