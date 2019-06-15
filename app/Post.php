@@ -10,4 +10,8 @@ class Post extends Model
     public function category(){
         return $this->belongsTo('App\Category');
     }
+//     public function getRouteKeyName()
+//    {
+//       return 'slug'; // use the 'product.slug' column for look ups within the database
+//    }
 }
