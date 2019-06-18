@@ -35,6 +35,14 @@ Route::get('/admin/posts/{post}/edit', 'admin\PostsController@edit');
 Route::patch('/admin/posts/{post}', 'admin\PostsController@update');
 Route::delete('/admin/posts/{post}', 'admin\PostsController@destroy');
 
+// admin users
+
+Route::get('/admin/users', 'admin\UsersController@index');
+Route::get('/admin/users/{user}/edit', 'admin\UsersController@edit');
+Route::get('/admin/users/{user}/edit-password', 'admin\UsersController@editPassword');
+Route::patch('/admin/users/{user}', 'admin\UsersController@update');
+Route::patch('/admin/users/{user}/update-password', 'admin\UsersController@updatePassword');
+Route::delete('/admin/users/{user}', 'admin\UsersController@destroy');
 
 // Playground - various tests
 
