@@ -43,6 +43,7 @@ Route::get('/admin/users/{user}/edit-password', 'admin\UsersController@editPassw
 Route::patch('/admin/users/{user}', 'admin\UsersController@update');
 Route::patch('/admin/users/{user}/update-password', 'admin\UsersController@updatePassword');
 Route::delete('/admin/users/{user}', 'admin\UsersController@destroy');
+Route::get('/admin/users/{user}/favorites', 'admin\UsersController@addCategory');
 
 // Playground - various tests
 

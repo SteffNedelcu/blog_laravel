@@ -115,4 +115,16 @@ class UsersController extends Controller
 
         return $validator;
     }
+    public function addCategory(User $user){
+        $user->favorites()->detach([1,4]);
+        $user->favorites()->attach([1,4]);
+//        $user->favorites()->detach([1]);
+//        dd($user->favorites);
+        foreach ($user->favorites as $favorite) {
+            echo "Name: " . $favorite->title . "</br>";
+            echo "Description: " . $favorite->description . "</br>";
+            echo "created_at: " . $favorite->pivot->created_at . "</br>";
+        }
+        exit();
+    }
 }
