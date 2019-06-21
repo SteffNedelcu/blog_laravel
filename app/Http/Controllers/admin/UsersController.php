@@ -127,4 +127,16 @@ class UsersController extends Controller
         }
         exit();
     }
+    public function roles(User $user){
+        $user->roles()->detach();
+//        $user->roles()->attach([1]);
+//        $user->roles()->detach([1]);
+        dd($user->authorizeRoles(['user']));
+        foreach ($user->favorites as $favorite) {
+            echo "Name: " . $favorite->title . "</br>";
+            echo "Description: " . $favorite->description . "</br>";
+            echo "created_at: " . $favorite->pivot->created_at . "</br>";
+        }
+        exit();
+    }
 }

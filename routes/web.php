@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','HomeController@index');
 
 
 Route::get('/admin/', 'admin\AdminController@index');
@@ -44,6 +42,7 @@ Route::patch('/admin/users/{user}', 'admin\UsersController@update');
 Route::patch('/admin/users/{user}/update-password', 'admin\UsersController@updatePassword');
 Route::delete('/admin/users/{user}', 'admin\UsersController@destroy');
 Route::get('/admin/users/{user}/favorites', 'admin\UsersController@addCategory');
+Route::get('/admin/users/{user}/roles', 'admin\UsersController@roles');
 
 // Playground - various tests
 
